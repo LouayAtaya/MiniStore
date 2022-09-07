@@ -1,0 +1,146 @@
+<!-- <div *ngIf="(currentUser$ | async)?.isAuthenticated; else noSidebar"> -->
+<div>
+
+    <nz-layout class="app-layout">
+        <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
+            [nzTrigger]="null">
+            <div class="sidebar-logo">
+                <a routerLink="/" target="_blank">
+                    <img src="assets/images/icon.png" alt="logo">
+                    <h1>Mini Store</h1>
+                </a>
+            </div>
+            <ul nz-menu nzTheme="dark" nzMode="inline">
+
+                <li nz-menu-item>
+                    <a  [routerLink]="['/']"  >
+                        <i nz-icon nzType="home"></i>
+                        <span>{{'::Menu:Home'|abpLocalization}}</span>
+                    </a>
+                </li>
+                <li nz-menu-group [nzTitle]="'::Actions'|abpLocalization"
+                   >
+                    <ul>
+                        <li nz-menu-item >
+                            <a routerLink="/items">
+                                <i nz-icon nzType="shopping-cart"></i>
+                                <span>{{'::Menu:Item'|abpLocalization}}</span>
+                            </a>
+
+                        </li>
+                        
+                    </ul>
+                </li>
+                <li nz-menu-group [nzTitle]="'AbpIdentity::Menu:IdentityManagement'|abpLocalization"
+                    *abpPermission="'AbpIdentity.Roles || AbpIdentity.Users'">
+                    <ul>
+                        <li nz-menu-item *abpPermission="'AbpIdentity.Roles'">
+                            <a routerLink="/identity/roles">
+                                <i nz-icon nzType="user-switch"></i>
+                                <span>{{'AbpIdentity::Roles'|abpLocalization}}</span>
+                            </a>
+
+                        </li>
+                        <li nz-menu-item *abpPermission="'AbpIdentity.Users'">
+                            <a routerLink="/identity/users">
+                                <i nz-icon nzType="user"></i>
+                                <span>{{'AbpIdentity::Users'|abpLocalization}}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li nz-menu-group [nzTitle]="'AbpTenantManagement::Menu:TenantManagement'|abpLocalization"
+                    *abpPermission="'AbpTenantManagement.Tenants'">
+                    <ul>
+                        <li nz-menu-item>
+                            <a routerLink="/tenant-management/tenants">
+                                <i nz-icon nzType="wallet"></i>
+                                <span>{{'AbpTenantManagement::Tenants'|abpLocalization}}</span>
+                            </a>
+
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </nz-sider>
+        <nz-layout>
+            <nz-header>
+                <div class="app-header navbar navbar-expand navbar-white navbar-light ">
+
+                    <ul nz-menu nzMode="horizontal" class="header-menu navbar-nav">
+                        <li nz-menu-item class="nav-item">
+                            <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+                                <span class="trigger" nz-icon
+                                    [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></span>
+                            </span>
+                        </li>
+                        <li nz-menu-item nzSelected class="nav-item">
+                            <a [routerLink]="['/']"  >
+                                <span>{{'::Menu:Home'|abpLocalization}}</span>
+                            </a>
+                        </li>
+                        <li nz-menu-item class="nav-item">nav 2</li>
+                    </ul>
+
+
+                    <ul class="header-menu navbar-nav ms-auto">
+                        <!-- <input type="search" placeholder="Search" class="bg-transparent border-0 text-white" /> -->
+                        <li class="nav-item d-flex align-items-center">
+                            <div *ngIf="(dropdownLanguages$ | async)?.length > 0" class="dropdown" ngbDropdown
+                                #languageDropdown="ngbDropdown" display="static"><a ngbDropdownToggle class="nav-link"
+                                    href="javascript:void(0)" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">{{defaultLanguage$|async}}</a>
+                                <div class="dropdown-menu dropdown-menu-right border-0 shadow-sm"
+                                    aria-labelledby="dropdownMenuLink"
+                                    [class.d-block]="smallScreen && languageDropdown.isOpen()"><a
+                                        *ngFor="let lang of dropdownLanguages$ | async" href="javascript:void(0)"
+                                        class="dropdown-item"
+                                        (click)="onChangeLang(lang.cultureName)">{{lang?.displayName}}</a></div>
+                            </div>
+                        </li>
+                        <li class="nav-item d-flex align-items-center">
+                            <ng-template #loginBtn><a role="button" class="nav-link pointer"
+                                    (click)="navigateToLogin()">{{'AbpAccount::Login'|abpLocalization}}</a>
+                            </ng-template>
+                            <div *ngIf="(currentUser$ | async)?.isAuthenticated; else loginBtn" ngbDropdown
+                                class="dropdown" #currentUserDropdown="ngbDropdown" display="static"><a
+                                    ngbDropdownToggle class="nav-link" href="javascript:void(0)" role="button"
+                                    id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false"><small
+                                        *ngIf="(selectedTenant$ | async)?.name as tenantName"><i>{{tenantName}}</i>\</small><strong>{{(currentUser$|async)?.userName}}</strong></a>
+                                <div class="dropdown-menu dropdown-menu-right border-0 shadow-sm"
+                                    aria-labelledby="dropdownMenuLink"
+                                    [class.d-block]="smallScreen && currentUserDropdown.isOpen()"><a
+                                        class="dropdown-item pointer" (click)="navigateToManageProfile()"><i
+                                            class="fa fa-cog mr-1"></i>{{'AbpAccount::MyAccount'|abpLocalization}}</a><a
+                                        class="dropdown-item" href="javascript:void(0)" (click)="logout()"><i
+                                            class="fa fa-power-off mr-1"></i>{{'AbpUi::Logout'|abpLocalization}}</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+            </nz-header>
+            <nz-content>
+                <div class="inner-content">
+                    <router-outlet></router-outlet>
+                </div>
+            </nz-content>
+
+            <nz-footer>
+                <strong>Copyright &copy; 2021-2022 <a [routerLink]="['/']">MiniStore</a>.</strong>
+                كل الحقوق محفوظة
+                <div class="float-right d-none d-sm-inline-block">
+                    <b>Version</b> 1.0.0
+                </div>
+            </nz-footer>
+        </nz-layout>
+    </nz-layout>
+
+</div><!-- to make sure sidebar is hidden when logged out-->
+<ng-template #noSidebar>
+
+    <router-outlet></router-outlet>
+</ng-template>

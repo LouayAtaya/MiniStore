@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Volo.Abp.Domain.Entities.Auditing;
+using Volo.Abp.Application.Dtos;
 
 namespace MiniStore.Items
 {
-    public class Item : AuditedAggregateRoot<Guid>
+    public class ItemDto : AuditedEntityDto<Guid>
     {
         public string Code { get; set; }
         public string Name { get; set; }
@@ -15,10 +13,8 @@ namespace MiniStore.Items
         public float Price { get; set; }
         public int TotalQuantity { get; set; }
 
-
         public ItemType Type { get; set; }
 
         public DateTime PublishDate { get; set; }
-
     }
 }

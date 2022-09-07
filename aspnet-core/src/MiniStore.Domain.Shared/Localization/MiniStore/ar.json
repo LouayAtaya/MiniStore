@@ -3,6 +3,25 @@
   "texts": {
     "Menu:Home": "الرئيسية",
     "Welcome": "مرحبا",
-    "LongWelcomeMessage": "مرحبا بكم في التطبيق. هذا مشروع بدء تشغيل يعتمد على إطار عمل ABP. لمزيد من المعلومات ، يرجى زيارة abp.io."
+    "LongWelcomeMessage": "مرحبا بكم في التطبيق. هذا مشروع بدء تشغيل يعتمد على إطار عمل ABP. لمزيد من المعلومات ، يرجى زيارة abp.io.",
+    "Menu:Item": "الأصناف",
+    "Actions": "العمليات",
+    "Close": "إغلاق",
+    "Delete": "حذف",
+    "Edit": "تعديل",
+    "View": "التفاصيل",
+    "PublishDate": "تاريخ البدء",
+    "NewItem": "صنف جديد",
+    "Code": "الكود",
+    "Name": "الاسم",
+    "Type": "النمط",
+    "Price": "السعر",
+    "TotalQuantity": "الكمية الإجمالية",
+    "CreationTime": "وقت البدء",
+    "AreYouSure": "هل انت متأكد؟",
+    "AreYouSureToDelete": "هل انت متأكد من حذف هذا العنصر؟",
+    "Enum:ItemType:0": "مواد خام",
+    "Enum:ItemType:1": "منتج",
+    "Enum:ItemType:2": "أصل"
   }
 }

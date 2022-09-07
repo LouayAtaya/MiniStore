@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MiniStore.Configurations;
+using MiniStore.Items;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.Data;
@@ -52,6 +54,8 @@ public class MiniStoreDbContext :
 
     #endregion
 
+    public DbSet<Item> Items { get; set; }
+
     public MiniStoreDbContext(DbContextOptions<MiniStoreDbContext> options)
         : base(options)
     {
@@ -74,6 +78,7 @@ public class MiniStoreDbContext :
         builder.ConfigureTenantManagement();
 
         /* Configure your own tables/entities inside here */
+        builder.ApplyConfiguration(new ItemConfiguration());
 
         //builder.Entity<YourEntity>(b =>
         //{
