@@ -1,0 +1,13 @@
+<nz-descriptions [nzColumn]="2" [nzTitle]="'::Details'|abpLocalization">
+    <nz-descriptions-item [nzTitle]="'::Code'|abpLocalization" [nzSpan]="1">{{itemDetails?.code}}</nz-descriptions-item>
+    <nz-descriptions-item [nzTitle]="'::Name'|abpLocalization" [nzSpan]="1">{{itemDetails?.name}}</nz-descriptions-item>
+    <nz-descriptions-item [nzTitle]="'::Type'|abpLocalization" [nzSpan]="1"> {{ '::Enum:ItemType:' + itemDetails?.type |abpLocalization }}
+    </nz-descriptions-item>
+    <nz-descriptions-item [nzTitle]="'::Price'|abpLocalization" [nzSpan]="1">{{itemDetails?.price}}
+    </nz-descriptions-item>
+    <nz-descriptions-item [nzTitle]="'::TotalQuantity'|abpLocalization" [nzSpan]="1">{{itemDetails?.totalQuantity}}
+    </nz-descriptions-item>
+    <nz-descriptions-item [nzTitle]="'::CreationTime'|abpLocalization" [nzSpan]="2">{{itemDetails?.creationTime |date:'medium'}}</nz-descriptions-item>
+    <nz-descriptions-item [nzTitle]="'::Description'|abpLocalization" [nzSpan]="2">{{itemDetails?.description}}
+    </nz-descriptions-item>
+</nz-descriptions>

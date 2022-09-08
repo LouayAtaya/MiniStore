@@ -6,22 +6,24 @@
             [nzTrigger]="null">
             <div class="sidebar-logo">
                 <a routerLink="/" target="_blank">
-                    <img src="assets/images/icon.png" alt="logo">
+                    <img src="assets/images/logo.png" alt="logo">
                     <h1>Mini Store</h1>
                 </a>
             </div>
             <ul nz-menu nzTheme="dark" nzMode="inline">
 
-                <li nz-menu-item>
+                <li nz-menu-item class="side-item">
                     <a  [routerLink]="['/']"  >
-                        <i nz-icon nzType="home"></i>
+                        <i nz-icon nzType="home" ></i>
                         <span>{{'::Menu:Home'|abpLocalization}}</span>
                     </a>
                 </li>
+                
+
                 <li nz-menu-group [nzTitle]="'::Actions'|abpLocalization"
-                   >
+                *abpPermission="'MiniStore.Items'">
                     <ul>
-                        <li nz-menu-item >
+                        <li nz-menu-item class="side-item">
                             <a routerLink="/items">
                                 <i nz-icon nzType="shopping-cart"></i>
                                 <span>{{'::Menu:Item'|abpLocalization}}</span>
@@ -34,14 +36,14 @@
                 <li nz-menu-group [nzTitle]="'AbpIdentity::Menu:IdentityManagement'|abpLocalization"
                     *abpPermission="'AbpIdentity.Roles || AbpIdentity.Users'">
                     <ul>
-                        <li nz-menu-item *abpPermission="'AbpIdentity.Roles'">
+                        <li nz-menu-item *abpPermission="'AbpIdentity.Roles'" class="side-item">
                             <a routerLink="/identity/roles">
                                 <i nz-icon nzType="user-switch"></i>
                                 <span>{{'AbpIdentity::Roles'|abpLocalization}}</span>
                             </a>
 
                         </li>
-                        <li nz-menu-item *abpPermission="'AbpIdentity.Users'">
+                        <li nz-menu-item *abpPermission="'AbpIdentity.Users'" class="side-item">
                             <a routerLink="/identity/users">
                                 <i nz-icon nzType="user"></i>
                                 <span>{{'AbpIdentity::Users'|abpLocalization}}</span>
@@ -52,7 +54,7 @@
                 <li nz-menu-group [nzTitle]="'AbpTenantManagement::Menu:TenantManagement'|abpLocalization"
                     *abpPermission="'AbpTenantManagement.Tenants'">
                     <ul>
-                        <li nz-menu-item>
+                        <li nz-menu-item class="side-item">
                             <a routerLink="/tenant-management/tenants">
                                 <i nz-icon nzType="wallet"></i>
                                 <span>{{'AbpTenantManagement::Tenants'|abpLocalization}}</span>
@@ -69,13 +71,13 @@
                 <div class="app-header navbar navbar-expand navbar-white navbar-light ">
 
                     <ul nz-menu nzMode="horizontal" class="header-menu navbar-nav">
-                        <li nz-menu-item class="nav-item">
+                        <li nz-menu-item class="nav-item ">
                             <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
                                 <span class="trigger" nz-icon
                                     [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></span>
                             </span>
                         </li>
-                        <li nz-menu-item nzSelected class="nav-item">
+                        <li nz-menu-item nzSelected class="nav-item ">
                             <a [routerLink]="['/']"  >
                                 <span>{{'::Menu:Home'|abpLocalization}}</span>
                             </a>
@@ -140,7 +142,3 @@
     </nz-layout>
 
 </div><!-- to make sure sidebar is hidden when logged out-->
-<ng-template #noSidebar>
-
-    <router-outlet></router-outlet>
-</ng-template>

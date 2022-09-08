@@ -12,8 +12,11 @@
     "View": "التفاصيل",
     "PublishDate": "تاريخ البدء",
     "NewItem": "صنف جديد",
+    "ItemDetails": "تفاصيل الصنف",
     "Code": "الكود",
     "Name": "الاسم",
+    "Details": "التفاصيل",
+    "Description": "الوصف",
     "Type": "النمط",
     "Price": "السعر",
     "TotalQuantity": "الكمية الإجمالية",
@@ -22,6 +25,19 @@
     "AreYouSureToDelete": "هل انت متأكد من حذف هذا العنصر؟",
     "Enum:ItemType:0": "مواد خام",
     "Enum:ItemType:1": "منتج",
-    "Enum:ItemType:2": "أصل"
+    "Enum:ItemType:2": "أصل",
+    "Save": "حفظ",
+    "Exit": "خروج",
+    "SelectItemType": "اختر نمط الصنف",
+    "NewItemAdded": "تمت إضافة الصنف بنجاح",
+    "ItemDeleted": "تم حذف الصنف بنجاح",
+    "Permission:MiniStore": "Mini Store",
+    "Permission:Items": "إدارة الأصناف",
+    "Permission:Items.Create": "إضافة أصناف جديدة",
+    "Permission:Items.Edit": "تعديل الأصناف",
+    "Permission:Items.Delete": "حذف الأصناف",
+    "MaxItemsCount": "العدد الأعظمي للمواد",
+    "ReachToMaxItemCountLimit": "لقد وصلت للحد الأقصى المسموح به من المواد"
+
   }
 }

@@ -1,5 +1,17 @@
 <!-- <abp-loader-bar></abp-loader-bar>
 <abp-dynamic-layout></abp-dynamic-layout> -->
 
+<div *ngIf="(currentUser$ | async)?.isAuthenticated; else noSidebar">
+    <app-main-layout></app-main-layout>
+</div>
 
-<app-main-layout></app-main-layout>
+<ng-template #noSidebar>
+    <div class="emptyView ">
+        <img src="assets/images/back1.jpg" class="background" alt="Background Image">
+        <div class="box">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+    
+</ng-template>

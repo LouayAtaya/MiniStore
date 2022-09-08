@@ -11,6 +11,15 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
+import { NzDescriptionsModule } from 'ng-zorro-antd/descriptions';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 @NgModule({
   declarations: [
@@ -27,7 +36,16 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
     NzCardModule,
     NzTableModule,
     NzButtonModule,
-    NzModalModule
+    NzModalModule,
+    NzDrawerModule,
+    NzDescriptionsModule,
+    NzDividerModule,
+    NzFormModule,
+    NzInputModule,
+    NzSelectModule,
+    NzDatePickerModule,
+    NzInputNumberModule,
+    NzMessageModule
   ],
   exports: [
 
@@ -42,7 +60,16 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
     NzCardModule,
     NzTableModule,
     NzButtonModule,
-    NzModalModule
+    NzModalModule,
+    NzDrawerModule,
+    NzDescriptionsModule,
+    NzDividerModule,
+    NzFormModule,
+    NzInputModule,
+    NzSelectModule,
+    NzDatePickerModule,
+    NzInputNumberModule,
+    NzMessageModule
   ],
   providers: []
 })

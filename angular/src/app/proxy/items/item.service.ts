@@ -17,6 +17,14 @@ export class ItemService {
     },
     { apiName: this.apiName });
 
+  createWithFeatureCheckByItemForCreationDto = (itemForCreationDto: ItemForCreationDto) =>
+    this.restService.request<any, ItemDto>({
+      method: 'POST',
+      url: '/api/app/item/with-feature-check',
+      body: itemForCreationDto,
+    },
+    { apiName: this.apiName });
+
   delete = (id: string) =>
     this.restService.request<any, void>({
       method: 'DELETE',

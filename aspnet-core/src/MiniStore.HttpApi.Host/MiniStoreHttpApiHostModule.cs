@@ -29,6 +29,7 @@ using Volo.Abp.Modularity;
 using Volo.Abp.Swashbuckle;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.VirtualFileSystem;
+using Volo.Abp.MultiTenancy;
 
 namespace MiniStore;
 
@@ -59,6 +60,13 @@ public class MiniStoreHttpApiHostModule : AbpModule
         ConfigureVirtualFileSystem(context);
         ConfigureCors(context, configuration);
         ConfigureSwaggerServices(context, configuration);
+
+       
+
+        //Configure<AbpTenantResolveOptions>(options =>
+        //{
+        //    options.AddDomainTenantResolver("{0}.MiniStore.net");
+        //});
     }
 
     private void ConfigureBundles()
@@ -207,6 +215,7 @@ public class MiniStoreHttpApiHostModule : AbpModule
 
         if (MultiTenancyConsts.IsEnabled)
         {
+
             app.UseMultiTenancy();
         }
 

@@ -1,0 +1,91 @@
+<form nz-form [formGroup]="itemForm" (ngSubmit)="submitForm()">
+  <div nz-row [nzGutter]="8">
+    <div nz-col nzSpan="12">
+      <nz-form-item>
+        <nz-form-label  nzRequired nzFor="code">{{'::Code'|abpLocalization}}</nz-form-label>
+        <nz-form-control nzErrorTip="The input is not valid Code!">
+          <input nz-input  id="code" formControlName="code"/>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzSpan="12">
+      <nz-form-item>
+        <nz-form-label  nzRequired nzFor="name">{{'::Name'|abpLocalization}}</nz-form-label>
+        <nz-form-control nzErrorTip="The input is not valid Name!">
+          <input nz-input  id="name" formControlName="name" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <div nz-row [nzGutter]="8">
+    <div nz-col nzSpan="12">
+      <nz-form-item>
+        <nz-form-label nzRequired nzFor="price">{{'::Price'|abpLocalization}}</nz-form-label>
+        <nz-form-control>
+          <nz-input-number id="price" formControlName="price"  [nzMin]="0"  [nzStep]="1"></nz-input-number>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzSpan="12">
+      <nz-form-item>
+        <nz-form-label nzRequired nzFor="totalQuantity">{{'::TotalQuantity'|abpLocalization}}</nz-form-label>
+        <nz-form-control>
+          <nz-input-number id="totalQuantity" formControlName="totalQuantity"  [nzMin]="0"  [nzStep]="1"></nz-input-number>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <div nz-row [nzGutter]="8">
+    <div nz-col nzSpan="12">
+      <nz-form-item>
+        <nz-form-label nzRequired nzFor="itemType">{{'::Type'|abpLocalization}}</nz-form-label>
+        <nz-form-control>
+          <nz-select id="itemType" formControlName="type" >
+            <nz-option nzValue="null" [nzLabel]="'::SelectItemType' |abpLocalization" nzDisabled></nz-option>
+            <nz-option [nzValue]="type.value" *ngFor="let type of itemTypes"   [nzLabel]="'::Enum:ItemType:' + type.value |abpLocalization"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzSpan="12">
+      <nz-form-item>
+        <nz-form-label nzRequired nzFor="publishDate">{{'::PublishDate'|abpLocalization}}</nz-form-label>
+        <nz-form-control>
+          <nz-date-picker id="publishDate" formControlName="publishDate"></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <div nz-row [nzGutter]="8">
+    <div nz-col nzSpan="24">
+      <nz-form-item>
+        <nz-form-label nzFor="description">{{'::Description'|abpLocalization}}</nz-form-label> 
+        <nz-form-control>
+          <textarea
+            nz-input
+            [nzAutosize]="{ minRows: 4, maxRows: 4 }"
+            formControlName="description"
+            id="description"
+          ></textarea>
+        </nz-form-control>
+      </nz-form-item>
+
+
+      
+    </div>
+  </div>
+
+  <div nz-row [nzGutter]="8">
+    <div nz-col  [nzOffset]="3">
+      <nz-form-item>
+        <nz-form-control>
+          <button  nz-button [disabled]="!itemForm.valid" nzType="primary">{{'::Save'|abpLocalization}}</button>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+</form>
+
+<div *nzModalFooter>
+  <button nz-button nzType="default" (click)="closeModal()">{{'::Exit'|abpLocalization}}</button>
+</div>

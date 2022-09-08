@@ -7,12 +7,16 @@
     "Menu:Item": "Items",
     "Actions": "Actions",
     "Close": "Close",
-    "Delete": "Delete",
     "Edit": "Edit",
+    "Delete": "Delete",
+    "View": "View",
     "PublishDate": "Publish date",
     "NewItem": "New item",
+    "ItemDetails": "Item Details",
     "Code": "Code",
     "Name": "Name",
+    "Details": "Details",
+    "Description": "Description",
     "TotalQuantity": "Total Quantity",
     "Type": "Type",
     "Price": "Price",
@@ -21,7 +25,18 @@
     "AreYouSureToDelete": "Are you sure you want to delete this item?",
     "Enum:ItemType:0": "Raw Item",
     "Enum:ItemType:1": "Product Item",
-    "Enum:ItemType:2": "Asset Item"
-
+    "Enum:ItemType:2": "Asset Item",
+    "Save": "Save",
+    "Exit": "Exit",
+    "SelectItemType": "Select Item Type",
+    "NewItemAdded": "The new Item has been added successfully",
+    "ItemDeleted": "The selected Item has been deleted successfully",
+    "Permission:MiniStore": "Mini Store",
+    "Permission:Items": "Items Management",
+    "Permission:Items.Create": "Creating new items",
+    "Permission:Items.Edit": "Editing the items",
+    "Permission:Items.Delete": "Deleting the items",
+    "MaxItemsCount": "Maximum number of items",
+    "ReachToMaxItemCountLimit": "You reached to yhe maximum items count limit"
   }
 }

@@ -1,86 +1,37 @@
-// :host {
-//   display: flex;
-//   text-rendering: optimizeLegibility;
-//   -webkit-font-smoothing: antialiased;
-//   -moz-osx-font-smoothing: grayscale;
-// }
 
-.app-layout {
+  .emptyView {
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #e9ecef;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   height: 100vh;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
-.menu-sidebar {
-  position: relative;
-  z-index: 10;
-  min-height: 100vh;
-  box-shadow: 2px 0 6px rgba(0, 21, 41, .35);
+.box{
+  width: 500px;
+  background-color: #fff;
+  border-top: 0;
+  color: #666;
+  padding: 20px;
+  z-index: 1000;
 }
 
-.header-trigger {
-  height: 64px;
-  padding: 20px 24px;
-  font-size: 20px;
-  cursor: pointer;
-  transition: all .3s, padding 0s;
+  .background {
+    display: block;
+    position:absolute;
+    width: 100%;
+    left: 0;
+    top: 3;
+    height: 100%;
+    background: #00000000;
+    opacity: .6;
 }
-
-.trigger:hover {
-  color: #1890ff;
-}
-
-.sidebar-logo {
-  position: relative;
-  height: 64px;
-  padding-right: 24px;
-  overflow: hidden;
-  line-height: 64px;
-  background: #001529;
-  transition: all .3s;
-}
-
-.sidebar-logo img {
-  display: inline-block;
-  height: 44px;
-  width: 44px;
-  vertical-align: middle;
-}
-
-.sidebar-logo h1 {
-  display: inline-block;
-  margin: 0 0 0 20px;
-  color: #fff;
-  font-weight: 600;
-  font-size: 14px;
-  font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
-  vertical-align: middle;
-}
-
-nz-header {
-  padding: 0;
-  width: 100%;
-  z-index: 2;
-}
-
-.app-header {
-  position: relative;
-  height: 64px;
-  padding: 0;
-  background: #fff;
-  box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
-}
-
-nz-content {
-  margin: 24px;
-}
-
-.inner-content {
-  padding: 24px;
-  background: #fff;
-  height: 100%;
-}
-
-.ant-menu-inline>.ant-menu-submenu>.ant-menu-submenu-title {
-  flex: content;
-  margin: 100px;
-}
-

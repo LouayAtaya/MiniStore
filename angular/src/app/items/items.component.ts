@@ -1,7 +1,12 @@
-import { ListService, PagedResultDto } from '@abp/ng.core';
+import { ListService, LocalizationService, PagedResultDto, SessionStateService } from '@abp/ng.core';
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from '@proxy/items';
+import { NzDrawerService } from 'ng-zorro-antd/drawer';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzModalService } from 'ng-zorro-antd/modal';
 import { ItemDto } from '../proxy/items/models';
+import { ItemDetailsComponent } from './components/item-details/item-details.component';
+import { ItemFormComponent } from './components/item-form/item-form.component';
 
 @Component({
   selector: 'app-items',
@@ -14,11 +19,10 @@ export class ItemsComponent implements OnInit {
   items: ItemDto[] = [];
   count = 0;
 
-  isVisible = false;
-  isOkLoading = false;
 
 
-  constructor(public readonly listService: ListService, private itemService: ItemService) {}
+  constructor(public readonly listService: ListService, private itemService: ItemService, private modalService: NzModalService, public drawerService:NzDrawerService,     private sessionState: SessionStateService, private localizationService: LocalizationService, private messageService: NzMessageService
+    ) {}
 
   ngOnInit(): void {
     const bookStreamCreator = (query) => this.itemService.getList(query);
@@ -29,20 +33,63 @@ export class ItemsComponent implements OnInit {
     });
   }
 
-  showModal(): void {
-    this.isVisible = true;
+  addNewItem(): void {
+    let modal=this.modalService.create({
+      nzTitle: this.localizationService.instant('::NewItem'),
+      nzWidth:"600px",
+      nzContent: ItemFormComponent,
+      nzOnOk: () =>{ console.log("okkkkk"); new Promise(resolve => setTimeout(resolve, 1000))},
+
+    });  
+
+    modal.afterClose.subscribe(
+      result => {
+        if(result&& result.success){
+          this.messageService.create("success",this.localizationService.instant('::NewItemAdded'))
+          this.listService.get();
+        }
+
+      }
+    );
+
+
   }
 
-  handleOk(): void {
-    this.isOkLoading = true;
-    setTimeout(() => {
-      this.isVisible = false;
-      this.isOkLoading = false;
-    }, 3000);
+  openDetailsDrawer(itemId){
+    const drawerRef = this.drawerService.create<ItemDetailsComponent, { value: string }, string>({
+      nzTitle: this.localizationService.instant('::ItemDetails'),
+      nzPlacement: this.selectedLangCulture=='ar'?'left':'right',
+      nzContent: ItemDetailsComponent,
+      nzContentParams: {
+        value: itemId
+      }
+    });
+
   }
 
-  handleCancel(): void {
-    this.isVisible = false;
+  deleteItem(itemId){
+    this.modalService.confirm({
+      nzTitle: this.localizationService.instant('::AreYouSureToDelete'),
+      nzOnOk: () =>{
+        this.itemService.delete(itemId).subscribe(
+          () => {
+            this.listService.get()
+            this.messageService.create("success",this.localizationService.instant('::ItemDeleted'))
+          }
+        )
+
+      }
+
+    });
   }
+
+  get selectedLangCulture(): string {
+    
+    return this.sessionState.getLanguage();
+  }
+
+  
+
+  
 
 }
