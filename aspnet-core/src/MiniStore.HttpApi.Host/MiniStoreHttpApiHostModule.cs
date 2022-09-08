@@ -61,12 +61,12 @@ public class MiniStoreHttpApiHostModule : AbpModule
         ConfigureCors(context, configuration);
         ConfigureSwaggerServices(context, configuration);
 
-       
 
-        //Configure<AbpTenantResolveOptions>(options =>
-        //{
-        //    options.AddDomainTenantResolver("{0}.MiniStore.net");
-        //});
+
+        Configure<AbpTenantResolveOptions>(options =>
+        {
+            options.AddDomainTenantResolver("{0}.MiniStore.net");
+        });
     }
 
     private void ConfigureBundles()

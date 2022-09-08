@@ -20,7 +20,7 @@ namespace MiniStore
 
         public async Task SeedAsync(DataSeedContext context)
         {
-            if (await _itemRepository.GetCountAsync() <= 0)
+            /*if (await _itemRepository.GetCountAsync() <= 0)
             {
                 await _itemRepository.InsertAsync(
                     new Item
@@ -48,7 +48,7 @@ namespace MiniStore
                     },
                     autoSave: true
                 );
-            }
+            }*/
         }
     }
 }
