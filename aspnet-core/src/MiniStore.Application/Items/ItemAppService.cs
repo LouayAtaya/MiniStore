@@ -44,24 +44,32 @@ namespace MiniStore.Items
         [Authorize(MiniStorePermissions.Items.Create)]
         public async Task<ItemDto> CreateWithFeatureCheck(ItemForCreationDto itemForCreationDto)
         {
-            var currentItemsCount = await this._itemRepository.CountAsync();
-
-             var maxItemsCountLimit = await _featureChecker.GetOrNullAsync("MiniStore.MaxItemsCount");
-
-            if (currentItemsCount >= Convert.ToInt32(maxItemsCountLimit))
+            using (CurrentTenant.Change(Guid.Parse("5AC706D0-9F23-DF9E-874D-3A063D863A78")))
             {
-                throw new BusinessException(
-                    "MiniStore:ReachToMaxItemCountLimit",
-                    $"You can not create more than {maxItemsCountLimit} items!"
-                );
+
+                
+                var currentItemsCount = await this._itemRepository.CountAsync();
+
+
+
+
+                var maxItemsCountLimit = await _featureChecker.GetOrNullAsync("MiniStore.MaxItemsCount");
+
+                if (currentItemsCount >= Convert.ToInt32(maxItemsCountLimit))
+                {
+                    throw new BusinessException(
+                        "MiniStore:ReachToMaxItemCountLimit",
+                        $"You can not create more than {maxItemsCountLimit} items!"
+                    );
+                }
+
+
+                var item = ObjectMapper.Map<ItemForCreationDto, Item>(itemForCreationDto);
+
+                await _itemRepository.InsertAsync(item);
+
+                return ObjectMapper.Map<Item, ItemDto>(item);
             }
-
-            var item= ObjectMapper.Map<ItemForCreationDto, Item>(itemForCreationDto);
-
-            await _itemRepository.InsertAsync(item);
-
-            return ObjectMapper.Map<Item, ItemDto>(item);
-
         }
 
 
